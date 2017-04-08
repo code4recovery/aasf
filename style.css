@@ -1,0 +1,60 @@
+/*
+Theme Name:   AASF
+Theme URI:    https://aasf.org
+Description:  Twenty Fourteen Child Theme
+Author:       Meeting Guide
+Author URI:   https://meetingguide.org
+Template:     twentyfourteen
+Version:      1.0.0
+License:      GNU General Public License v2 or later
+License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
+Text Domain:  aasf
+*/
+
+/* sidebar widgets */
+.widget_tsml_widget_upcoming table thead { display: none; }
+.widget_tsml_widget_upcoming table {
+	border: 0;
+}
+.widget_tsml_widget_upcoming table tbody tr { 
+	display: block;
+	padding: 6px 6px 6px 80px;
+	position: relative;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.widget_tsml_widget_upcoming table tbody td { 
+	display: block;
+	border: 0;
+}
+.widget_tsml_widget_upcoming table tbody td a { 
+	font-weight: 700;
+}
+.widget_tsml_widget_upcoming table tbody td a small { 
+	color: #999;
+	margin-left: 4px;
+}
+.widget_tsml_widget_upcoming table tbody td a small:before { 
+	content: " / ";
+	margin-right: 3px;
+}
+.widget_tsml_widget_upcoming table tbody td.time { 
+	position: absolute;
+	left: 0;
+}
+.widget_tsml_widget_upcoming p a {
+	font-size: 15px;
+	font-weight: 700;
+}
+ol.tribe-list-widget { margin-bottom: 15px; }
+ol.tribe-list-widget h4.tribe-event-title { margin-top: 0; }
+ol.tribe-list-widget li.tribe-events-list-widget-events {
+border-top: 1px solid rgba(0, 0, 0, 0.1);
+padding: 15px 0 18px;
+margin-bottom: 0;
+}
+a#helpline { text-align: center; display: block; font-size: 30px; }
+
+#main-content a:hover { text-decoration: underline; }
+
+div.search-toggle { display: none; }
