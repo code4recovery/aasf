@@ -95,6 +95,67 @@ body.home .hentry { margin-bottom: 10px; }
 }
 
 
+/* michael's edits */
+h3 {padding:7px;}
+.divs {
+    display: inline-block;
+    padding: 10px;
+	width: 42%;
+    border: 1px solid white;
+    margin: 20px;
+
+}
+
+.div-2 {
+    float: left:
+}
+
+.div-1 {
+    float: left;
+}
+
+@media screen and (max-width: 800px) {
+    .divs {
+        display: block;
+        margin: 0 auto;
+		width:100%;
+    }
+	
+	.home-column-row.two-columns .column  	
+   {
+	background-color: red;
+	width: 100%; 
+	} 
+	.home-column-row.three-columns  {
+		margin-left: 2%; 
+	}
+ 
+}
+
+.home-column-row .column {
+	float: left;
+	display: inline-block;
+	padding: 0 7.5px;
+	box-sizing: border-box;
+	
+}
+.home-column-row.two-columns  {
+	margin-left:2%;
+
+}
+.home-column-row.two-columns .column {
+	width: 50%;
+	
+}
+.home-column-row.three-columns  {
+	margin-left: 2%;
+ 
+}
+.home-column-row.three-columns .column {
+	width: 294px;
+}
+
+
 /* removing left sidebar, http://wphow2s.com/tutorials/center-twenty-fourteen-theme-and-remove-left-sidebar/ */
 @media screen and (min-width: 1110px) {
 	.archive-header,
