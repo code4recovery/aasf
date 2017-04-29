@@ -19,9 +19,9 @@ add_action('widgets_init', function(){
 		'id' => 'home-2',
 		'description' => 'Widgets for the second row on the home page with two slots',
 		'before_widget' => '<div id="%1$s" class="column %2$s">',
-		'after_widget'  => '</div>',
+		'after_widget'  => '</div></div>',
 		'before_title'  => '<h3>',
-		'after_title'   => '</h3>',
+		'after_title'   => '</h3><div class="widget-content">',
     ));
 
     register_sidebar(array(
@@ -29,12 +29,12 @@ add_action('widgets_init', function(){
 		'id' => 'home-3',
 		'description' => 'Widgets for the third row on the home page with three slots',
 		'before_widget' => '<div id="%1$s" class="column %2$s">',
-		'after_widget'  => '</div>',
+		'after_widget'  => '</div></div>',
 		'before_title'  => '<h3>',
-		'after_title'   => '</h3>',
+		'after_title'   => '</h3><div class="widget-content">',
     ));
 
-	register_sidebar( array(
+	register_sidebar(array(
 		'name'          => 'Service Sidebar',
 		'id'            => 'content-service',
 		'description'   => 'Additional sidebar that appears on the right of the Service section pages.',
@@ -42,6 +42,6 @@ add_action('widgets_init', function(){
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h1 class="widget-title">',
 		'after_title'   => '</h1>',
-	) );
+	));
 	
 }, 11);

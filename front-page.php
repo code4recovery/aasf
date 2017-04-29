@@ -33,15 +33,16 @@ get_header(); ?>
 			?>
 
 			<div class="hentry">
+				<div class="widgets">
+						
+					<div class="home-column-row two-columns">
+						<?php dynamic_sidebar('home-2')?>
+					</div>
 					
-				<div class="home-column-row two-columns">
-					<?php dynamic_sidebar('home-2')?>
+					<div class="home-column-row three-columns">
+						<?php dynamic_sidebar('home-3')?>
+					</div>
 				</div>
-				
-				<div class="home-column-row three-columns">
-					<?php dynamic_sidebar('home-3')?>
-				</div>
-				
 			</div>
 		</div>
 	</div>
