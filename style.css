@@ -89,6 +89,7 @@ Text Domain:  aasf
 	
 
 /* section 2: page-specific edits */
+	#tsml tr.notes a:after { content: "*"; }
 
 
 /* 2a: home page */

@@ -5,6 +5,12 @@ add_action('wp_enqueue_scripts', function() {
 	wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
 });
 
+if (function_exists('tsml_custom_types')) {
+    tsml_custom_types(array(
+        'H' => 'Chips',
+        'BA' => 'Childcare',
+    ));
+}
 
 //by default, tsml should show meetings in a 1 mile radius
 $tsml_defaults['distance'] = 1;
