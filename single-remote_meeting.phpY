@@ -1,0 +1,109 @@
+<?php
+/**
+ * The default template for displaying content
+ *
+ * Used for both single and index/archive/search.
+ *
+ * @package WordPress
+ * @subpackage Twenty_Fourteen
+ * @since Twenty Fourteen 1.0
+ */
+?>
+
+
+<div id="tsml">
+	<div id="meeting" class="container">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1 main">
+
+				<div class="page-header">
+					<h1><?php echo tsml_format_name($meeting->post_title, $meeting->types_expanded)?></h1>
+				</div>
+				
+				
+				
+				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	
+	<div class="entry-content">
+	
+	<!-- custom fields here -->						
+ 
+<?php 
+    $monday = get_post_meta( get_the_ID(), 'monday', true);
+    $tuesday = get_post_meta( get_the_ID(), 'tuesday', true);
+    $wednesday = get_post_meta( get_the_ID(), 'wednesday', true);
+    $thursday = get_post_meta( get_the_ID(), 'thursday', true);
+    $friday = get_post_meta( get_the_ID(), 'friday', true);
+    $saturday = get_post_meta( get_the_ID(), 'saturday', true);
+    $sunday = get_post_meta( get_the_ID(), 'sunday', true);
+	$meeting_arm = get_post_meta( get_the_ID(), 'meeting_name_arm', true);
+	$platform = get_post_meta( get_the_ID(), 'platform_arm', true);
+	$link_arm = get_post_meta( get_the_ID(), '	link_to_meeting_arm', true);
+	$add_access = get_post_meta( get_the_ID(), 'additional_access_details_arm', true);
+	$format_spec = get_post_meta( get_the_ID(), 'meeting_format_specifics_arm', true);
+	$sev_trad = get_post_meta( get_the_ID(), 'seventh_trad_link_arm', true);
+	$script_link = get_post_meta( get_the_ID(), 'script_arm', true);
+ 
+		if( ! empty( $monday ) ) {
+		echo 'Monday: ' . $monday . '</p>';
+	}
+			if( ! empty( $tuesday) ) {
+		echo 'Tuesday: ' . $tuesday. '</p>';
+	}
+		if( ! empty( $wednesday ) ) {
+		echo 'Wednesday: ' . $wednesday. '</p>';
+	}
+		if( ! empty( $thursday) ) {
+		echo 'Thursday: ' . $thursday . '</p>';
+	}
+		if( ! empty( $friday ) ) {
+		echo 'Friday: ' . $friday . '</p>';
+	}
+		if( ! empty( $saturday ) ) {
+		echo 'Saturday: ' . $saturday . '</p>';
+	}
+		if( ! empty( $sunday ) ) {
+		echo 'Sunday: ' . $sunday . '</p>';
+	}
+	if( ! empty( $platform ) ) {
+		echo '<p><label>Platform:</label> ' . $platform . '</p>';
+	}
+	
+	if( ! empty( $link_arm ) ) {
+		echo '<p><label>Link to Meeting:</label> ' . $link_arm . '</p>';
+	}
+	
+	if( ! empty( $add_access ) ) {
+		echo '<p><label>Access Information:</label> ' . $add_access . '</p>';
+	}
+	
+	if( ! empty( $format_spec ) ) {
+		echo '<p><label>Format Information:</label> ' . $format_spec . '</p>';
+	}
+	
+	if( ! empty( $sev_trad ) ) {
+		echo '<p><label>Seventh Tradition:</label> ' . $sev_trad . '</p>';
+	}
+	
+	if( ! empty( $script_link ) ) {
+		echo '<p><label>Script Link:</label> ' . $script_link . '</p>';
+	}
+ 
+?>
+
+<div id="arm-image"><?php twentyfourteen_post_thumbnail(); ?></div>
+ 
+<!-- End custom fields -->
+	
+
+		</div><!-- .entry-content -->
+	
+
+</article><!-- #post-<?php the_ID(); ?> -->
+				
+			</div>
+		</div>
+	</div>
+</div>
+<?php
+get_footer();

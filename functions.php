@@ -66,3 +66,103 @@ tsml_custom_addresses([
         'longitude' => -122.853340,
     ]
 ]);
+
+/**
+ * Register all shortcodes
+ *
+ * @return null
+ */
+function register_shortcodes() {
+    add_shortcode( 'remote_meeting', 'shortcode_remote_meeting' );
+}
+add_action( 'init', 'register_shortcodes' );
+
+/**
+ * Hello Everyone Remote Meeting Shortcode
+ *
+ * @param Array $atts
+ *
+ * @return string
+ */
+function shortcode_remote_meeting($atts)
+{
+    global $wp_query, $post;
+
+    ob_start();
+
+    $atts = shortcode_atts(array(
+        'day' => 'monday',
+        'type' => 'post'
+    ), $atts);
+
+    $loop = new WP_Query(array(
+        'posts_per_page' => -1,
+        'post_status' => 'publish',
+        'post_type' => $atts['type'],
+        'meta_key' => $atts['day'],
+        'meta_type' => 'DATE'
+    ));
+
+    $events = array();
+
+    if ($loop->have_posts()) {
+
+        while ($loop->have_posts()) {
+            $loop->the_post();
+
+            $meeting_format_specifics_arm = get_post_meta(get_the_ID(), 'meeting_format_specifics_arm', true);
+            if (!empty($meeting_format_specifics_arm)) {
+                $meeting_format_specifics_arm_value = $meeting_format_specifics_arm;
+            }
+
+            $link_to_meeting_arm = get_post_meta(get_the_ID(), 'link_to_meeting_arm', true);
+            if (!empty($link_to_meeting_arm)) {
+                $link_to_meeting_arm_value = $link_to_meeting_arm;
+            }
+
+            // taxonomy
+            $term_obj_list = get_the_terms($post->ID, 'designation');
+            $terms_string = join(', ', wp_list_pluck($term_obj_list, 'name'));
+
+            // origin
+            $term_origin = get_the_terms($post->ID, 'origins');
+            $origin_string = join(', ', wp_list_pluck($term_origin, 'name'));
+
+            $day = get_post_meta(get_the_ID(), in_array($atts['day'], true));
+            if (!empty($day)) {
+            	$events[] = array(
+                    'day' => $atts['day'],
+                    'day_value' => strtolower(array_values($day[$atts['day']])[0]),
+                    'permalink' => get_the_permalink(),
+                    'title' => get_the_title(),
+                    'terms_string' => $terms_string,
+                    'meeting_format_specifics_arm_value' => $meeting_format_specifics_arm_value,
+                    'origin_string' => $origin_string,
+                    'link_to_meeting_arm_value' => $link_to_meeting_arm_value,
+                );
+			}
+        }
+
+    }
+
+
+    if (count($events) > 0) {
+		usort($events, function ($a, $b) {
+            return strtotime($a['day_value']) > strtotime($b['day_value']);
+        });
+		
+        foreach ($events as $event) {
+            echo '<div id="arm-listing" style="margin:15px 0;">';
+            echo '<div id="arm-name">' . $event['day_value'] . '</div>';
+            echo '<div id="arm-name"><a href="' . $event['permalink'] . '">' . $event['title'] . ' </a></div>';
+            echo '<div id="arm-designation">' . $event['terms_string'] . '</div>';
+            echo '<div id="arm-format-spec">' . $event['meeting_format_specifics_arm_value'] . '</div>';
+            echo '<div id="arm-origin">Origin: ' . $event['origin_string'] . '</div>';
+            echo '<div id="arm-link"><label>Link to Meeting:</label> <a href="' . $event['link_to_meeting_arm_value'] . '">' . $event['link_to_meeting_arm_value'] . '</a></div>';
+            echo '</div>';
+        }
+    }
+
+    wp_reset_postdata();
+    return ob_get_clean();
+}
