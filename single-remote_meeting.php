@@ -9,8 +9,6 @@
 
 get_header(); ?>
 
-	<div id="remote-return"><a href="../remote-meetings"> < Return to Remote Meetings List</a></div>
-
 	<div id="primary" class="content-area">
 
 	<div id="content" class="site-content" role="main">

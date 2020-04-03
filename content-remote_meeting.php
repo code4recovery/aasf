@@ -46,6 +46,14 @@
 	$sev_trad_plat = get_post_meta( get_the_ID(), 'seventh_platform_arm', true);
 	$sev_trad = get_post_meta( get_the_ID(), 'seventh_trad_link_arm', true);
 	$script_link = get_post_meta( get_the_ID(), 'script_arm', true);
+	
+	 // taxonomy
+                                $term_designation = get_the_terms(get_the_ID(), 'designation');
+                                $designation_string = join(', ', wp_list_pluck($term_designation, 'name'));
+
+     // origin
+                                $term_origin = get_the_terms(get_the_ID(), 'origin');
+                                $origin_string = join(', ', wp_list_pluck($term_origin, 'name'));
  
 		if( ! empty( $monday ) ) {
 		echo 'Monday: ' . $monday . '</p>';
@@ -73,7 +81,7 @@
 	}
 	
 	if( ! empty( $link_arm ) ) {
-		echo '<p><label>Link to Meeting:</label> ' . $link_arm . '</p>';
+		echo '<p><label>Link to Meeting:</label> <a href="' . $link_arm . '" target="_blank">' . $link_arm . '</a></p>';
 	}
 	
 	if( ! empty( $add_access ) ) {
@@ -92,6 +100,14 @@
 		echo '<p><label>Script Link:</label> ' . $script_link . '</p>';
 	}
  
+   if(!empty($designation_string)) {
+        echo '<p><label>Designation: </label> ' .$designation_string . '</p>';
+    }
+
+   if(!empty($origin_string)) {
+        echo '<p><label>Origin: </label> ' .$origin_string . '</p>';
+    }
+ 
 ?>
 
 <div id="arm-image"><?php twentyfourteen_post_thumbnail(); ?></div>
@@ -100,6 +116,8 @@
 
  
 <!-- End custom fields -->
+
+<div id="remote-return"><a href="../online-meetings"> < Return to Remote Meetings List</a></div>
 	
 
 		</div><!-- .entry-content -->

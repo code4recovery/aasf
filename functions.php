@@ -125,14 +125,14 @@ function shortcode_remote_meeting($atts)
             $terms_string = join(', ', wp_list_pluck($term_obj_list, 'name'));
 
             // origin
-            $term_origin = get_the_terms($post->ID, 'origins');
+            $term_origin = get_the_terms($post->ID, 'origin');
             $origin_string = join(', ', wp_list_pluck($term_origin, 'name'));
 
-            $day = get_post_meta(get_the_ID(), in_array($atts['day'], true));
+            $day = get_post_meta(get_the_ID(), $atts['day'], true);
             if (!empty($day)) {
             	$events[] = array(
                     'day' => $atts['day'],
-                    'day_value' => strtolower(array_values($day[$atts['day']])[0]),
+                    'day_value' => strtolower($day),
                     'permalink' => get_the_permalink(),
                     'title' => get_the_title(),
                     'terms_string' => $terms_string,
@@ -153,11 +153,23 @@ function shortcode_remote_meeting($atts)
 		
         foreach ($events as $event) {
             echo '<div id="arm-listing" style="margin:15px 0;">';
-            echo '<div id="arm-name">' . $event['day_value'] . '</div>';
+            echo '<div id="arm-time">' . $event['day_value'] . '</div>';
             echo '<div id="arm-name"><a href="' . $event['permalink'] . '">' . $event['title'] . ' </a></div>';
-            echo '<div id="arm-designation">' . $event['terms_string'] . '</div>';
-            echo '<div id="arm-format-spec">' . $event['meeting_format_specifics_arm_value'] . '</div>';
-            echo '<div id="arm-origin">Origin: ' . $event['origin_string'] . '</div>';
+         		
+         		if( ! empty( $event['terms_string']) ) {
+		echo '<div id="arm-designation">' . $event['terms_string'] . '</div>';;
+	}
+	
+	 //		if( ! empty( $event['meeting_format_specifics_arm_value']) ) {
+	//	 echo '<div id="arm-format-spec">' . $event['meeting_format_specifics_arm_value'] . '</div>';
+//	}
+	
+	//echo '<div id="arm-format-spec">' . $event['meeting_format_specifics_arm_value'] . '</div>';
+	
+		if( ! empty( $event['origin_string']) ) {
+		echo '<div id="arm-origin">Origin: ' . $event['origin_string'] . '</div>';
+	}
+
             echo '<div id="arm-link"><label>Link to Meeting:</label> <a href="' . $event['link_to_meeting_arm_value'] . '">' . $event['link_to_meeting_arm_value'] . '</a></div>';
             echo '</div>';
         }
