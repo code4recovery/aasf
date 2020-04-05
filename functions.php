@@ -170,7 +170,7 @@ function shortcode_remote_meeting($atts)
 		echo '<div id="arm-origin">Origin: ' . $event['origin_string'] . '</div>';
 	}
 
-            echo '<div id="arm-link"><label>Link to Meeting:</label> <a href="' . $event['link_to_meeting_arm_value'] . '">' . $event['link_to_meeting_arm_value'] . '</a></div>';
+    //        echo '<div id="arm-link"><label>Link to Meeting:</label> <a href="' . $event['link_to_meeting_arm_value'] . '">' . $event['link_to_meeting_arm_value'] . '</a></div>';
             echo '</div>';
         }
     }
