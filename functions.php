@@ -3,6 +3,7 @@
 //schedule changes loader and page
 include 'schedule-changes.php';
 include 'dashboard.php';
+include 'remote-meetings-export.php';
 
 //load parent style
 add_action('wp_enqueue_scripts', function () {
