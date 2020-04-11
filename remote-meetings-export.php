@@ -23,6 +23,7 @@ function export_remote_meetings(){
             AND post_status = "publish"');
     foreach ($results as $result) {
         $meetings[$result->ID] = array_merge([
+            'id' => $result->ID,
             'name' => $result->post_title,
             'updated' => $result->post_modified,
             'slug' => $result->post_name,
@@ -43,7 +44,7 @@ function export_remote_meetings(){
 
     //render file
     $file = fopen('php://memory', 'w'); 
-    fputcsv($file, array_merge(['name', 'updated', 'slug', 'content'], $columns), ',');
+    fputcsv($file, array_merge(['id', 'name', 'updated', 'slug', 'content'], $columns), ',');
     foreach ($meetings as $meeting) { 
         fputcsv($file, $meeting, ',');
     }
