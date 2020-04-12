@@ -38,7 +38,7 @@ function export_remote_meetings(){
             AND meta_key IN (' . implode(',', array_map(function($col) { return '"' . $col . '"'; }, $columns)) . ')');
     foreach ($results as $result) {
         if (array_key_exists($result->post_id, $meetings)) {
-            $meetings[$result->post_id][$result->meta_key] = $result->meta_value;
+            $meetings[$result->post_id][$result->meta_key] = trim($result->meta_value);
         }
     }
 
