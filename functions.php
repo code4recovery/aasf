@@ -12,9 +12,11 @@ add_action('wp_enqueue_scripts', function () {
 
 if (function_exists('tsml_custom_types')) {
     tsml_custom_types(array(
-        'H' => 'Chips',
+        'BE' => 'Beginner',
+        'H' => 'Chip Meeting',
         'BA' => 'Childcare',
-        'SEN' => 'Seniors',
+        'EN' => 'English-speaking',
+        'ES' => 'En Español',
     ));
 }
 
