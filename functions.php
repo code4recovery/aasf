@@ -16,7 +16,7 @@ if (function_exists('tsml_custom_types')) {
         'H' => 'Chip Meeting',
         'BA' => 'Childcare',
         'EN' => 'English-speaking',
-        'ES' => 'En Español',
+        'S' => 'En Español',
     ));
 }
 
