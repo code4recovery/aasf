@@ -5,6 +5,14 @@ include 'schedule-changes.php';
 include 'dashboard.php';
 include 'remote-meetings-export.php';
 
+//special AASF situation
+$tsml_conference_providers += array(
+    'sites.google.com' => 'Google Sites',
+    'tinyurl.com' => 'TinyURL',
+    'MillValleyCabin.com' => 'MillValleyCabin.com',
+    'drydocksf.org' => 'drydocksf.org',
+);
+
 //load parent style
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
