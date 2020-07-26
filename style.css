@@ -17,6 +17,16 @@ Text Domain:  aasf
   margin: 0 auto;
 }
 
+body.page-template-page-blank-template .printfriendly {
+  display: none !important;
+}
+
+body.page-template-page-blank-template #main,
+body.page-template-page-blank-template .pf-content,
+body.page-template-page-blank-template .loading {
+  min-height: 500px;
+}
+
 div.search-toggle,
 .entry-content span.edit-link {
   display: none;
