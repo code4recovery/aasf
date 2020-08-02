@@ -28,6 +28,9 @@ if (function_exists('tsml_custom_types')) {
     ));
 }
 
+//hide public meeting finder
+$tsml_slug = false;
+
 //by default, tsml should show meetings in a 1 mile radius
 $tsml_defaults['distance'] = 1;
 
