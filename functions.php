@@ -6,12 +6,12 @@ include 'dashboard.php';
 include 'remote-meetings-export.php';
 
 //special AASF situation
-$tsml_conference_providers += array(
-    'sites.google.com' => 'Google Sites',
-    'tinyurl.com' => 'TinyURL',
-    'MillValleyCabin.com' => 'MillValleyCabin.com',
-    'drydocksf.org' => 'drydocksf.org',
-);
+$tsml_conference_providers = array_merge(array(
+    'sites.google.com' => 'Custom',
+    'tinyurl.com' => 'Custom',
+    'MillValleyCabin.com' => 'Custom',
+    'drydocksf.org' => 'Custom',
+), $tsml_conference_providers);
 
 //load parent style
 add_action('wp_enqueue_scripts', function () {
