@@ -4,35 +4,12 @@
 include 'schedule-changes.php';
 include 'dashboard.php';
 include 'remote-meetings-export.php';
-
-//special AASF situation
-$tsml_conference_providers = array_merge(array(
-    'sites.google.com' => 'Custom',
-    'tinyurl.com' => 'Custom',
-    'MillValleyCabin.com' => 'Custom',
-    'drydocksf.org' => 'Custom',
-), $tsml_conference_providers);
+include 'tsml_react.php';
 
 //load parent style
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
 });
-
-if (function_exists('tsml_custom_types')) {
-    tsml_custom_types(array(
-        'BE' => 'Beginner',
-        'H' => 'Chip Meeting',
-        'BA' => 'Childcare',
-        'EN' => 'English-speaking',
-        'S' => 'En Español',
-    ));
-}
-
-//hide public meeting finder
-$tsml_slug = false;
-
-//by default, tsml should show meetings in a 1 mile radius
-$tsml_defaults['distance'] = 1;
 
 //remove sidebar
 add_action('widgets_init', function () {
@@ -69,17 +46,6 @@ add_action('widgets_init', function () {
     ));
 
 }, 11);
-
-//random petaluma meeting wreaking havoc with google
-tsml_custom_addresses([
-    '15 Park Ave., Inverness, CA, 94937, USA' => [
-        'formatted_address' => '15 Park Ave, Inverness, CA 94937, USA',
-        'city' => 'Inverness',
-        'postal_code' => '94937',
-        'latitude' => 38.097210,
-        'longitude' => -122.853340,
-    ]
-]);
 
 /**
  * Register all shortcodes
