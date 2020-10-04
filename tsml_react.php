@@ -20,7 +20,10 @@ add_shortcode('tsml_react', function() {
     wp_enqueue_script('tsml_react', $host . '/app.js');
     wp_localize_script('tsml_react', 'tsml_react_config', array(
         'timezone' => get_option('timezone_string'),
-        'conference_providers' => $conference_providers
+        'conference_providers' => $conference_providers,
+        'show' => array(
+            'cityAsRegionFallback' => false,
+        )
     ));
     return '<meetings src="' . $url . '" mapbox="' . $mapbox_key . '"/>';
 });
