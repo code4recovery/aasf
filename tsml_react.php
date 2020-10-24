@@ -11,6 +11,7 @@ add_shortcode('tsml_react', function() {
         'sites.google.com' => 'Custom',
         'tinyurl.com' => 'Custom',
         'MillValleyCabin.com' => 'Custom',
+        'millvalleycabin.com' => 'Custom',
         'drydocksf.org' => 'Custom',
     ];
     $is_local = substr(get_site_url(), -5) == '.test';
