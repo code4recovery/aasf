@@ -15,7 +15,7 @@ add_shortcode('tsml_react', function() {
     ];
     $is_local = substr(get_site_url(), -5) == '.test';
     $host = 'https://react.' . ($is_local ? 'test' : 'meetingguide.org');
-    $url = 'https://airtable-json.' . ($is_local ? 'test' : 'aasfmarin.org');
+    $url = ($is_local ? 'https://airtable-json.test' : 'https://v1.nocodeapi.com/aasfmarin/airtable/lWoccjRiuyakOvOi?tableName=SYNC_tsml&view=TSML_fields&&perPage=all&cacheTime=3600');
     wp_enqueue_style('tsml_react', $host . '/style.css');
     wp_enqueue_script('tsml_react', $host . '/app.js');
     wp_localize_script('tsml_react', 'tsml_react_config', array(
