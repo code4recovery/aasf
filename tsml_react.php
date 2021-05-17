@@ -13,8 +13,7 @@ add_shortcode('tsml_react', function() {
         'MillValleyCabin.com' => 'Custom',
         'drydocksf.org' => 'Custom',
     ];
-    //$host = 'https://cdn.jsdelivr.net/gh/code4recovery/tsml-ui/public/app.js';
-    $host = 'https://react.meetingguide.org/app.js';
+    $host = 'https://cdn.jsdelivr.net/gh/code4recovery/tsml-ui/public/app.js';
     $url = 'https://airtable-json.aasfmarin.org';
     wp_enqueue_script('tsml_react', $host);
     wp_localize_script('tsml_react', 'tsml_react_config', array(
