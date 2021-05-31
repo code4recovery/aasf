@@ -24,7 +24,7 @@ add_shortcode('tsml_react', function() {
         ),
         'strings' => array(
             'en' => array(
-                'region': 'City / Neighborhood',
+                'region' => 'City / Neighborhood',
             ),
         )
     ));
