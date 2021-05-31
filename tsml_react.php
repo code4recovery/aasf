@@ -13,7 +13,7 @@ add_shortcode('tsml_react', function() {
         'MillValleyCabin.com' => 'Custom',
         'drydocksf.org' => 'Custom',
     ];
-    $host = 'https://cdn.jsdelivr.net/gh/code4recovery/tsml-ui/public/app.js';
+    $host = 'https://react.meetingguide.org/app.js';
     $url = 'https://airtable-json.aasfmarin.org';
     wp_enqueue_script('tsml_react', $host);
     wp_localize_script('tsml_react', 'tsml_react_config', array(
@@ -21,6 +21,11 @@ add_shortcode('tsml_react', function() {
         'conference_providers' => $conference_providers,
         'show' => array(
             'cityAsRegionFallback' => false,
+        ),
+        'strings' => array(
+            'en' => array(
+                'region': 'City / Neighborhood',
+            ),
         )
     ));
     return '<meetings src="' . $url . '" mapbox="' . $mapbox_key . '"/>';
